@@ -3,6 +3,7 @@
         "@babel/core": "^7.17.0",
         "@babel/preset-env": "^7.16.0",
         "@symfony/webpack-encore": "^4.0.0",
+        "autoprefixer": "^10.4.14",
         "core-js": "^3.23.0",
         "postcss-loader": "^7.0.0",
         "regenerator-runtime": "^0.13.9",
@@ -19,5 +20,11 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
-    }
+    },
+    "browserslist": [
+        "> 0.5%",
+        "last 2 versions",
+        "Firefox ESR",
+        "not dead"
+        ]
 }
