@@ -1,0 +1,14 @@
+{% block figureSearch %}
+<div {{ attributes }}>
+    <input
+        type="search"
+        data-model="query"
+    >
+
+    <ul>
+        {% for figure in this.figures %}
+            <li>{{ figure.name }}</li>
+        {% endfor %}
+    </ul>
+</div> 
+{% endblock %}

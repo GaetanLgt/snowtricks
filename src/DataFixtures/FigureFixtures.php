@@ -5,8 +5,9 @@ namespace App\DataFixtures;
 use App\Entity\Figure;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-class FigureFixtures extends Fixture
+class FigureFixtures extends Fixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -19,7 +20,7 @@ class FigureFixtures extends Fixture
         $figure->setUpdatedAt(new \DateTimeImmutable());
         $figure->setSlug('mute');
         $manager->persist($figure);
-        $manager->flush();
+        $this->addReference('mute', $figure);
 
         $figure = new Figure();
         $figure->setName('Sad');
@@ -28,7 +29,7 @@ class FigureFixtures extends Fixture
         $figure->setUpdatedAt(new \DateTimeImmutable());
         $figure->setSlug('sad');
         $manager->persist($figure);
-        $manager->flush();
+        $this->addReference('sad', $figure);
 
         $figure = new Figure();
         $figure->setName('Indy');
@@ -37,7 +38,7 @@ class FigureFixtures extends Fixture
         $figure->setUpdatedAt(new \DateTimeImmutable());
         $figure->setSlug('indy');
         $manager->persist($figure);
-        $manager->flush();
+        $this->addReference('indy', $figure);
 
         $figure = new Figure();
         $figure->setName('360');
@@ -46,7 +47,7 @@ class FigureFixtures extends Fixture
         $figure->setUpdatedAt(new \DateTimeImmutable());
         $figure->setSlug('360');
         $manager->persist($figure);
-        $manager->flush();
+        $this->addReference('360', $figure);
 
         $figure = new Figure();
         $figure->setName('180');
@@ -55,6 +56,12 @@ class FigureFixtures extends Fixture
         $figure->setUpdatedAt(new \DateTimeImmutable());
         $figure->setSlug('180');
         $manager->persist($figure);
+        $this->addReference('180', $figure);
         $manager->flush();
+    }
+
+    public function getOrder(): int
+    {
+        return 1;
     }
 }
